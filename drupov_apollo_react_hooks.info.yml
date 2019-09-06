@@ -1,0 +1,9 @@
+name: 'Drupov Apollo React Hooks'
+type: module
+description: 'Drupal 8 Apollo React Hooks demo - create a GraphQL schema for players data from a custom content type.'
+core: 8.x
+package: Custom
+dependencies:
+  - 'graphql:graphql'
+  - 'node:node'
+  - menu_ui
