@@ -23,6 +23,7 @@ class PlayersSchema extends SdlSchemaPluginBase {
     $builder = new ResolverBuilder();
 
     $this->addQueryFields($registry, $builder);
+    $this->addMutationFields($registry, $builder);
     $this->addPlayerFields($registry, $builder);
 
     // Re-usable connection type fields.
@@ -47,6 +48,18 @@ class PlayersSchema extends SdlSchemaPluginBase {
       $builder->produce('query_players')
         ->map('offset', $builder->fromArgument('offset'))
         ->map('limit', $builder->fromArgument('limit'))
+    );
+  }
+
+  /**
+   * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
+   * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
+   */
+  protected function addMutationFields(ResolverRegistry $registry, ResolverBuilder $builder) {
+    // Create player mutation.
+    $registry->addFieldResolver('Mutation', 'createPlayer',
+      $builder->produce('create_player')
+        ->map('data', $builder->fromArgument('data'))
     );
   }
 

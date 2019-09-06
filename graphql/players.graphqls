@@ -1,5 +1,6 @@
 schema {
   query: Query
+  mutation: Mutation
 }
 
 type Query {
@@ -19,4 +20,13 @@ type Player {
 type PlayerConnection {
   total: Int!
   items: [Player!]
+}
+
+type Mutation {
+  createPlayer(data: PlayerInput): Player
+}
+
+input PlayerInput {
+  first_name: String!
+  last_name: String!
 }
